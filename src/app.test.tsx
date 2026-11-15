@@ -98,7 +98,8 @@ test("entsperren, Plan sehen, anmelden, Wunsch setzen, als Planer verwalten", as
   await until(() => db.tables.dp_wishes?.length === 1, "Wunsch gespeichert");
   await until(() => days[days.length - 1].querySelector(".wish-pill")?.textContent === "X", "Wunsch sichtbar");
   expect(db.tables.dp_wishes[0]).toMatchObject({ staff_id: person(1, "", "").id, code: "X" });
-  expect($(".planner")?.textContent).toContain("1 von 5 Personen");
+  // The pill appears at once; the planner's count follows when the reload has finished.
+  await until(() => $(".planner")?.textContent?.includes("1 von 5 Personen"), "Planer-Übersicht aktualisiert");
 
   // 6. Settings: staff list and admin tools for the planner.
   await go("#/einstellungen");
