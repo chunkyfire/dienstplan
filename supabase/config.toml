@@ -1,0 +1,5 @@
+project_id = "tpbrtxzmxosgxerptkef"
+
+# The function checks its own session token; Supabase's JWT check is switched off for it.
+[functions.dienstplan]
+verify_jwt = false

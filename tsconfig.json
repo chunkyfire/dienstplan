@@ -1,0 +1,41 @@
+{
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "server/**/*.ts",
+    "vite.config.ts"
+  ],
+  "compilerOptions": {
+    "target": "ES2022",
+    "jsx": "react-jsx",
+    "module": "ESNext",
+    "lib": [
+      "ES2023",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "types": [
+      "vite/client"
+    ],
+    "moduleResolution": "Bundler",
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noFallthroughCasesInSwitch": true,
+    "paths": {
+      "@tanstack/react-router": [
+        "./src/shim/router.tsx"
+      ],
+      "@tanstack/react-start": [
+        "./src/shim/start.ts"
+      ],
+      "@/*": [
+        "./src/*"
+      ]
+    }
+  },
+  "exclude": [
+    "**/*.test.*"
+  ]
+}
