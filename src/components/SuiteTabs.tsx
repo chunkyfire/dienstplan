@@ -15,6 +15,7 @@ export function SuiteTabs({ active, me }: { active: Tab; me: Me | null }) {
         <Link to="/" className={cls("aktuell")}>Aktuell</Link>
         <Link to="/planung" className={cls("planung")}>Planung</Link>
         {me && <Link to="/einstellungen" className={cls("einstellungen")}>Einstellungen</Link>}
+        <a href="./Dienstplan_Handbuch.pdf" target="_blank" rel="noreferrer" className="suite-tab">Handbuch</a>
         <span className="suite-user">
           {me ? (
             <>

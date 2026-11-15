@@ -7,3 +7,4 @@
 - Swap suggestions come only from the deterministic solver (`src/lib/swapSolver.ts` + `src/lib/arbzg.ts`); the AI assistant calls it as a tool and must never invent swaps.
 - The staff table is the single staff list: its level wins over the level printed in a plan, the name is the join key to plan entries, and the Chefarzt level never steps in. Deactivate people instead of deleting them so old plans stay readable.
 - Uploading, removing and approving plans is for planners; the stand-in list can be changed by anyone with the site password.
+- The handbook is `public/Dienstplan_Handbuch.pdf`, built from `docs/handbuch.build.js` (docx, then PDF). Update it when behaviour changes; it must describe only what the app does today. Its support contact is the one name that is meant to be public.

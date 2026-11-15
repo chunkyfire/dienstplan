@@ -70,7 +70,7 @@ test("entsperren, Plan sehen, anmelden, Wunsch setzen, als Planer verwalten", as
 
   // 2. Live plan with tabs and the stand-in order.
   await until(() => $(".week-grid"), "Wochenansicht");
-  expect($$(".suite-tab").map(t => t.textContent)).toEqual(["Aktuell", "Planung"]);
+  expect($$(".suite-tab").map(t => t.textContent)).toEqual(["Aktuell", "Planung", "Handbuch"]);
   expect(document.body.textContent).toContain("Anna");
   expect($$(".free-entry.is-next").map(e => e.textContent)).toContain("1Ben");
   expect(document.body.textContent).not.toContain("Dienstplan hier ablegen");
@@ -90,7 +90,7 @@ test("entsperren, Plan sehen, anmelden, Wunsch setzen, als Planer verwalten", as
   await type($("input[name=password]")!, "eigenes-pw-1");
   await submit($(".login-box")!);
   await until(() => $(".wish-grid"), "Wunschkalender");
-  expect($$(".suite-tab").map(t => t.textContent)).toEqual(["Aktuell", "Planung", "Einstellungen"]);
+  expect($$(".suite-tab").map(t => t.textContent)).toEqual(["Aktuell", "Planung", "Einstellungen", "Handbuch"]);
 
   // 5. Set a wish for a day later this month (or the last day).
   const days = $$(".wish-day:not(.is-pad)");
