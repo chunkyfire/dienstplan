@@ -1,0 +1,458 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8"><title>Dienstplan · Anleitung</title><style>
+@page{size:A4;margin:0}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{font-family:Inter,sans-serif;color:#111;font-size:11pt;line-height:1.4}
+main *{min-width:0}
+.page{width:210mm;height:297mm;padding:15mm 16mm 13mm;position:relative;page-break-after:always;overflow:hidden;display:flex;flex-direction:column}
+.ln{stroke:#111;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+svg text{font-family:Inter,sans-serif}
+.ic,.icg{fill:none;stroke:#111;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.icg.w{stroke:#fff}
+.sl{font-size:11px;font-weight:600}.sl.b{font-weight:800;font-size:12.5px}
+header{margin-bottom:6mm}
+.kick{font-size:8.5pt;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#FF4D2E}
+h1{font-family:"Inter Display",Inter,sans-serif;font-weight:900;font-size:37pt;letter-spacing:-.035em;line-height:1.02;margin-top:1mm}
+h2{font-family:"Inter Display",Inter,sans-serif;font-weight:800;font-size:17pt;letter-spacing:-.02em;margin:9mm 0 4mm}
+h3{font-weight:800;font-size:12pt;letter-spacing:-.01em}
+main{flex:1;display:flex;flex-direction:column}
+footer{display:flex;justify-content:space-between;align-items:center;margin-top:4mm}
+.pn{width:8.5mm;height:8.5mm;border:2.2px solid #111;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:9.5pt}
+.wm{font-family:"Inter Display";font-weight:900;font-size:8.5pt;letter-spacing:.22em}
+.lead{font-size:13pt;font-weight:500;letter-spacing:-.01em;max-width:150mm;line-height:1.3}
+.fine{font-size:7.6pt;color:#555;line-height:1.4;margin-top:auto;padding-top:4mm}
+.fine.up{margin-top:2.5mm;padding-top:0}
+.dot{display:inline-block;width:2.6mm;height:2.6mm;border-radius:50%;border:1.6px solid #111;vertical-align:-.2mm;margin:0 .6mm 0 1mm}
+.co{flex:none;display:inline-grid;place-items:center;width:6.4mm;height:6.4mm;border-radius:50%;background:#111;color:#fff;font-weight:800;font-size:8.6pt}
+
+/* Titel */
+.cover{padding:18mm 18mm 16mm}
+.ctop{display:flex;gap:2.5mm}
+.ctag{background:#111;color:#fff;font-weight:800;font-size:9pt;letter-spacing:.14em;text-transform:uppercase;padding:1.8mm 4mm;border-radius:99px}
+.ctag.ghost{background:#fff;color:#111;border:2.2px solid #111;padding:1.4mm 4mm}
+.ctitle{font-size:104pt;line-height:.86;letter-spacing:-.055em;margin-top:9mm}
+.csub{font-size:17pt;font-weight:600;margin-top:6mm;letter-spacing:-.015em}
+.csub::before{content:"";display:inline-block;width:11mm;height:3.2mm;background:#FF4D2E;border-radius:99px;margin-right:3.5mm}
+.cart{width:100%;margin-top:auto}
+.cfoot{display:flex;justify-content:space-between;align-items:center;margin-top:9mm}
+.pills{display:flex;gap:2mm}.pills span{border:2.2px solid #111;border-radius:99px;padding:1.6mm 4.2mm;font-weight:700;font-size:10pt}
+.pills span:first-child{background:#FF4D2E;color:#fff}
+.url{display:flex;align-items:center;gap:2mm;font-weight:700;font-size:10.5pt}
+.url.dark{background:#111;color:#fff;border-radius:99px;padding:2mm 4.5mm;width:max-content;margin-top:3.5mm}.url.dark .ic{stroke:#fff}
+
+/* Mini-Bildschirm */
+.scr{border:2.6px solid #111;border-radius:3.2mm;background:#fff;overflow:hidden;width:100%}
+.scr .bar{height:4.2mm;border-bottom:2.2px solid #111;display:flex;align-items:center;gap:1mm;padding-left:2mm}
+.scr .bar i{width:1.5mm;height:1.5mm;border-radius:50%;background:#111}
+.scrb{padding:2.2mm}
+.tabs{display:flex;gap:1mm;margin-bottom:2mm}
+.tabs span{font-size:6.2pt;font-weight:700;border:1.5px solid #111;border-radius:99px;padding:.5mm 1.9mm}
+.tabs .on{background:#111;color:#fff}
+.tabs span{white-space:nowrap}.part .tabs{gap:.6mm}.part .tabs span{font-size:5.2pt;padding:.4mm 1.2mm}
+.mini{height:24mm;border-radius:1.6mm}
+.wkm{background:repeating-linear-gradient(90deg,#111 0 1.6px,transparent 1.6px 14.285%),repeating-linear-gradient(0deg,#111 0 1.6px,transparent 1.6px 25%);border:1.6px solid #111;border-left:0;border-top:0}
+.calm{display:grid;grid-template-columns:repeat(7,1fr);gap:1mm}
+.calm i{border:1.5px solid #111;border-radius:1mm}.calm i.a{background:#FF4D2E}.calm i.k{background:#111}
+.setm{display:flex;flex-direction:column;gap:1.6mm;justify-content:center}
+.setm i{height:3.4mm;border:1.5px solid #111;border-radius:99px}.setm i.s{width:40%;background:#111}
+.addr{display:flex;align-items:center;gap:1.5mm;border:1.6px solid #111;border-radius:99px;padding:1mm 2mm;margin:9mm 0}
+.addr b{flex:1;height:1.6mm;background:#111;border-radius:9px;max-width:60%}
+.form{display:flex;flex-direction:column;gap:1.6mm;padding:1.5mm 0;min-height:24mm;justify-content:center}
+.form .in{font-style:normal;font-size:6.6pt;font-weight:700;border:1.6px solid #111;border-radius:1.6mm;padding:1mm 2mm;letter-spacing:.06em}
+.form .in.code{background:#FFE3DB;letter-spacing:.2em}
+.form .btn{font-style:normal;font-size:6.6pt;font-weight:800;background:#111;color:#fff;border-radius:1.6mm;padding:1.1mm 2mm;text-align:center}
+.form .btn.a{background:#FF4D2E}
+
+/* Teile */
+.parts{display:grid;grid-template-columns:repeat(3,1fr);gap:5mm}
+.part{position:relative;border:2.6px solid #111;border-radius:5mm;padding:11mm 5mm 7mm}
+.part h3{font-size:16pt;margin-top:4.5mm}.part p{font-size:10pt;margin-top:1mm;padding-right:6mm}
+.pid{position:absolute;top:-2.6px;left:-2.6px;background:#111;color:#fff;font-weight:900;font-size:12pt;width:9mm;height:9mm;display:grid;place-items:center;border-radius:5mm 0 3mm 0}
+.qty{position:absolute;right:4mm;bottom:3.5mm;font-weight:900;font-size:13pt}
+.need{display:grid;grid-template-columns:repeat(3,1fr);gap:5mm}
+.need>div{display:grid;grid-template-columns:auto 1fr;column-gap:3.5mm;align-items:center}
+.need .big{grid-row:span 2;width:20mm;height:20mm;border-radius:50%;background:#FFE3DB;border:2.6px solid #111;display:grid;place-items:center}
+.need b{font-size:12pt;align-self:end}.need span{font-size:9.4pt;align-self:start;color:#333}
+.yesno{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:4mm}
+.yesno>div{display:flex;align-items:center;gap:3mm;border:2.6px solid #111;border-radius:4mm;padding:6mm 4.5mm;font-weight:700;font-size:10.6pt}
+.yesno .yes{background:#FFE3DB}.yesno .no .ic{stroke:#FF4D2E;stroke-width:3}.yesno .yes .ic{stroke-width:3}
+
+/* Schritte */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:5mm}
+.step{position:relative;padding-top:1mm}
+.step .num{font-family:"Inter Display";font-weight:900;font-size:27pt;line-height:1;letter-spacing:-.04em}
+.step .art{margin:2mm 0 2.6mm}.step .art svg{width:100%;display:block}
+.steps.three .art{border:2.6px solid #111;border-radius:4mm;padding:1.5mm;background:#fff}
+.steps.low .art svg{height:27mm}
+.step p{font-size:10pt;margin-top:.6mm;color:#222}
+.lane{border:2.6px solid #111;border-radius:6mm;padding:6mm 7mm 7mm;margin-bottom:6mm}
+.lane.acc{background:#FFE3DB}
+.lh{display:flex;align-items:center;gap:3.5mm;margin-bottom:2mm}
+.lh h2{margin:0;font-size:19pt}
+.tag{background:#111;color:#fff;font-weight:800;font-size:7.8pt;letter-spacing:.12em;text-transform:uppercase;padding:1.2mm 3mm;border-radius:99px}
+.with{margin-left:auto;display:flex;align-items:center;gap:1.6mm;font-weight:700;font-size:9.6pt}
+.note{display:flex;gap:3mm;align-items:flex-start;border:2.2px solid #111;border-radius:4mm;padding:4mm 4.5mm;font-size:9.8pt}
+.note .ic{flex:none;margin-top:.3mm}.note.acc{background:#FFE3DB}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:4mm;margin-top:auto}
+.row3{display:grid;grid-template-columns:repeat(3,1fr);gap:4mm;margin-top:auto}.row3.flat{margin-top:0}
+.row3 .note{font-size:9.3pt;flex-direction:column;gap:1.6mm}
+
+/* Aktuell */
+.anno{position:relative;padding:0 7mm}
+.anno .scrb{padding:3mm}
+.wktop{display:flex;gap:1.2mm;margin:1mm 0 2.4mm}.wktop .sp{flex:1}
+.nav{font-size:6.6pt;font-weight:800;border:1.6px solid #111;border-radius:99px;padding:.5mm 2.2mm;display:flex;align-items:center}
+.nav .dot{margin:0;width:2.1mm;height:2.1mm}
+.wk{display:grid;grid-template-columns:17mm repeat(7,1fr);border:2px solid #111;border-radius:2mm;overflow:hidden}
+.wkh{font-size:7pt;font-weight:800;text-align:center;padding:1mm 0;border-bottom:2px solid #111;border-left:1.4px solid #111}
+.wkh:first-child{border-left:0}.wkh.we,.wkc.we{background:#F1F1F1}.wkh.today{background:#111;color:#fff}
+.wkl{font-size:6.6pt;font-weight:800;padding:1.2mm 1.4mm;border-bottom:1.4px solid #111;display:flex;align-items:center;line-height:1.15}
+.wkc{border-left:1.4px solid #111;border-bottom:1.4px solid #111;padding:1mm;display:flex;flex-direction:column;gap:.8mm;justify-content:center}
+.wkc.hit{background:#FFE3DB;outline:2.4px solid #FF4D2E;outline-offset:-2.4px}
+.nm{display:flex;align-items:center;gap:.7mm;height:2.3mm}.nm .dot{width:1.9mm;height:1.9mm;margin:0;border-width:1.2px}.nm b{height:1.3mm;background:#111;border-radius:9px}
+.wkl.free,.wkc.free{border-bottom:0;background:#fff;border-top:1.2px solid #111;padding-top:1.6mm;padding-bottom:1.6mm}.wkc.free.we{background:#F1F1F1}
+.nm.first b{background:#FF4D2E}
+.anno .co{position:absolute;box-shadow:0 0 0 2.2px #fff}
+.p1{left:3mm;top:12.5mm}.p2{right:3mm;top:12.5mm}.p3{left:3mm;top:43mm}.p4{left:58mm;top:27.8mm}.p5{left:85.5mm;top:46.5mm}.p6{left:3mm;bottom:6mm}
+.legend{display:grid;grid-template-columns:1fr 1fr;gap:3.2mm 6mm;margin-top:6mm}
+.legend>div{display:flex;gap:2.4mm;align-items:flex-start;font-size:9.8pt}.legend p{padding-top:.5mm}
+.chips{display:grid;grid-template-columns:repeat(4,1fr);gap:3.5mm}
+.chip{border:2.6px solid #111;border-radius:4mm;padding:4.5mm 3.8mm 5mm;display:flex;flex-direction:column;gap:.6mm}
+.chip b{font-size:10.4pt;margin-top:1.5mm}.chip span{font-size:8.8pt;color:#333}
+.chip.ok{background:#FF4D2E;color:#fff}.chip.ok span{color:#fff}.chip.ok .ic{stroke:#fff;stroke-width:3}
+.chip.off{background:#111;color:#fff}.chip.off span{color:#ddd}.chip.off .ic{stroke:#fff}
+
+/* Ausfall */
+.sol{display:grid;grid-template-columns:1fr 1fr;gap:4mm}
+.sol>div{position:relative;border:2.6px solid #111;border-radius:5mm;padding:4mm 4.5mm 4.5mm}
+.sol h3{padding-left:9mm}.sol svg{width:68%;display:block;margin:1mm auto 1mm}
+.sol p{font-size:9.8pt;text-align:center}
+.sn{position:absolute;left:3.6mm;top:3mm;width:6.4mm;height:6.4mm;border-radius:50%;background:#111;color:#fff;display:grid;place-items:center;font-weight:800;font-size:8.6pt}
+
+/* Einspringliste */
+.queue{width:100%;margin-top:7mm}
+.lv3{display:flex;gap:6mm;align-items:center;font-weight:700;font-size:9.6pt;margin-top:1mm}
+.lv3 em{margin-left:auto;font-style:normal;font-weight:500;color:#444}
+
+/* Wünsche */
+.tiles{display:flex;flex-direction:column;gap:4.5mm}
+.tg{display:grid;grid-template-columns:40mm 1fr;align-items:center}
+.tg em{font-style:normal;font-weight:700;font-size:10.4pt;padding-right:4mm}
+.tg>div{display:flex;gap:3mm}
+.tile{width:31mm;border:2.6px solid #111;border-radius:4mm;padding:3.4mm 3.4mm 3.6mm;position:relative}
+.tile b{font-family:"Inter Display";font-weight:900;font-size:25pt;letter-spacing:-.03em;line-height:1.05;display:block}
+.tile span{font-size:9.2pt;font-weight:600}
+.tile .ic{position:absolute;right:2.4mm;top:2.6mm}
+.tile.a{background:#FF4D2E;color:#fff}.tile.a .ic{stroke:#fff}
+.tile.k{background:#111;color:#fff}.tile.k .ic{stroke:#fff}
+.tile.n b{color:#FF4D2E}
+
+/* Hinweise */
+.hints{display:grid;grid-template-columns:repeat(3,1fr);gap:6mm;margin-top:8mm}
+.hints h3{margin-top:3mm;font-size:13pt}.hints p{font-size:9.8pt}
+.dayc{height:31mm;border:2.6px solid #111;border-radius:4.5mm;padding:2.6mm 3.2mm;position:relative}
+.dayc i{font-style:normal;font-weight:800;font-size:10pt}
+.dayc b{position:absolute;right:3mm;top:2.4mm;background:#FF4D2E;color:#fff;border-radius:2mm;font-size:10pt;padding:.3mm 2.2mm}
+.dayc span{position:absolute;left:3mm;right:3mm;bottom:3mm;font-size:8.4pt;font-weight:700;border-radius:99px;padding:1mm 2.6mm;background:#E9E9E9}
+.dayc.tight{border-color:#FF4D2E;background:#FFE3DB}.dayc.tight span{background:#FF4D2E;color:#fff}
+.see{display:grid;grid-template-columns:32mm 1fr;gap:3.4mm 5mm;align-items:center}
+.who{text-align:center}.who svg{height:21mm;display:block;margin:0 auto}.who b{font-size:9pt}
+.what{display:flex;gap:4mm;align-items:center;border:2.6px solid #111;border-radius:4.5mm;padding:4.4mm 5.5mm;font-size:10.6pt}
+.what .ic{flex:none}
+.see .what:nth-of-type(4){border-style:dashed}
+
+/* Dienstplanung */
+.cycle{display:grid;grid-template-columns:80mm 1fr;gap:7mm;align-items:center}
+.cycle svg{width:100%}
+.cycle ol{list-style:none;display:flex;flex-direction:column;gap:3.4mm}
+.cycle li{display:flex;gap:2.6mm;align-items:flex-start;font-size:10pt}.cycle li p{padding-top:.5mm}
+
+/* Regeln */
+.rules{display:grid;grid-template-columns:repeat(3,1fr);gap:5mm}
+.rules>div{border:2.6px solid #111;border-radius:5mm;padding:6mm 5.5mm 6.5mm}
+.rules>div:first-child{background:#FF4D2E;color:#fff}
+.rbig{font-family:"Inter Display";font-weight:900;font-size:50pt;letter-spacing:-.05em;line-height:1}
+.rbig small{font-size:15pt;letter-spacing:0;margin-left:1mm}
+.rules b{font-size:12pt}.rules p{font-size:9.8pt;margin-top:.6mm}
+.tls{display:flex;flex-direction:column;gap:3.4mm}
+.tl{display:grid;grid-template-columns:9mm 1fr 27mm;gap:3mm;align-items:center}
+.tl>b{font-family:"Inter Display";font-weight:900;font-size:15pt}
+.tl>span{font-size:8.8pt;font-weight:600;font-variant-numeric:tabular-nums}
+.trk{position:relative;height:8mm;border:2.2px solid #111;border-radius:99px;overflow:hidden;background:repeating-linear-gradient(90deg,transparent 0 calc(25% - 1px),#bbb calc(25% - 1px) 25%)}
+.trk i{position:absolute;top:0;bottom:0;background:#FFE3DB;border-left:2.2px solid #111;border-right:2.2px solid #111}
+.trk i.a{background:#FF4D2E}.trk i.k{background:#111}
+.tl.head .trk{border:0;background:none;height:4mm;overflow:visible}
+.tl.head em{position:absolute;transform:translateX(-50%);font-style:normal;font-size:7.6pt;font-weight:700}
+.tl.head em:first-child{transform:none}.tl.head em:last-child{transform:translateX(-100%)}
+.help{display:grid;grid-template-columns:52mm 1fr;gap:6mm;align-items:center;border:2.6px solid #111;border-radius:6mm;padding:5mm 7mm;margin-top:10mm;background:#FFE3DB}
+.help svg{width:100%}.help h2{margin:0 0 1.5mm;font-size:19pt}.help p{font-size:10.4pt}
+</style></head><body>
+<svg width="0" height="0" style="position:absolute">
+ <defs>
+  <symbol id="fig" viewBox="0 0 64 100">
+    <path d="M24 70v22M40 70v22M20 93h8M36 93h8" class="ln"/>
+    <path d="M15 47L8 64M49 47l7 17" class="ln"/>
+    <path d="M14 70V45q0-10 11-10h14q11 0 11 10v25z" class="ln" style="fill:var(--f,#fff)"/>
+    <path d="M26 35l6 8 6-8" class="ln" style="fill:none"/>
+    <circle cx="32" cy="18" r="12.5" class="ln" style="fill:#fff"/>
+    <path d="M19.8 15C21 3.5 43 3.5 44.2 15z" style="fill:#111"/>
+    <path d="M27 21.5v.1M37 21.5v.1" class="ln"/>
+    <path d="M28 26q4 3 8 0" class="ln" style="fill:none"/>
+  </symbol>
+  <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1l8 4-8 4" fill="none" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+  <marker id="aha" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1l8 4-8 4" fill="none" stroke="#FF4D2E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+ </defs>
+</svg><section class="page cover">
+  <div class="ctop"><div class="ctag">Anleitung</div><div class="ctag ghost">für alle im Team</div></div>
+  <h1 class="ctitle">DIENST<br>PLAN</h1>
+  <p class="csub">Selbst. Bestimmt. Arbeiten.</p>
+  <svg class="cart" viewBox="0 0 520 330">
+    <rect x="150" y="26" width="344" height="252" rx="14" class="ln" fill="#fff"/>
+    <path d="M150 70h344" class="ln"/>
+    <path d="M205 16v22" class="ln"/><path d="M247 16v22" class="ln"/><path d="M289 16v22" class="ln"/><path d="M331 16v22" class="ln"/><path d="M373 16v22" class="ln"/><path d="M415 16v22" class="ln"/><path d="M457 16v22" class="ln"/>
+    <rect x="166" y="84" width="37" height="29" rx="6" fill="#fff" stroke="#111" stroke-width="2"/><rect x="211" y="84" width="37" height="29" rx="6" fill="#fff" stroke="#111" stroke-width="2"/><rect x="256" y="84" width="37" height="29" rx="6" fill="#fff" stroke="#111" stroke-width="2"/><rect x="301" y="84" width="37" height="29" rx="6" fill="#FF4D2E" stroke="#111" stroke-width="2"/><text x="319.5" y="104.5" text-anchor="middle" font-size="15" font-weight="800" fill="#fff">F</text><rect x="346" y="84" width="37" height="29" rx="6" fill="#fff" stroke="#111" stroke-width="2"/><rect x="391" y="84" width="37" height="29" rx="6" fill="#fff" stroke="#111" stroke-width="2"/><rect x="436" y="84" width="37" height="29" rx="6" fill="#fff" stroke="#111" stroke-width="2"/><rect x="166" y="121" width="37" height="29" rx="6" fill="#fff" stroke="#111" stroke-width="2"/><rect x="211" y="121" width="37" height="29" rx="6" fill="#fff" stroke="#111" stroke-width="2"/><rect x="256" y="121" width="37" height="29" rx="6" fill="#FFE3DB" stroke="#111" stroke-width="2"/><rect x="301" y="121" width="37" height="29" rx="6" fill="#FFE3DB" stroke="#111" stroke-width="2"/><rect x="346" y="121" width="37" height="29" rx="6" fill="#fff" stroke="#111" stroke-width="2"/><rect x="391" y="121" width="37" height="29" rx="6" fill="#fff" stroke="#111" stroke-width="2"/><rect x="436" y="121" width="37" height="29" rx="6" fill="#fff" stroke="#111" stroke-width="2"/><rect x="166" y="158" width="37" height="29" rx="6" fill="#fff" stroke="#111" stroke-width="2"/><rect x="211" y="158" width="37" height="29" rx="6" fill="#fff" stroke="#111" stroke-width="2"/><rect x="256" y="158" width="37" height="29" rx="6" fill="#111" stroke="#111" stroke-width="2"/><text x="274.5" y="178.5" text-anchor="middle" font-size="15" font-weight="800" fill="#fff">N</text><rect x="301" y="158" width="37" height="29" rx="6" fill="#fff" stroke="#111" stroke-width="2"/><rect x="346" y="158" width="37" height="29" rx="6" fill="#fff" stroke="#111" stroke-width="2"/><rect x="391" y="158" width="37" height="29" rx="6" fill="#FF4D2E" stroke="#111" stroke-width="2"/><text x="409.5" y="178.5" text-anchor="middle" font-size="15" font-weight="800" fill="#fff">S</text><rect x="436" y="158" width="37" height="29" rx="6" fill="#fff" stroke="#111" stroke-width="2"/><rect x="166" y="195" width="37" height="29" rx="6" fill="#fff" stroke="#111" stroke-width="2"/><rect x="211" y="195" width="37" height="29" rx="6" fill="#fff" stroke="#111" stroke-width="2"/><rect x="256" y="195" width="37" height="29" rx="6" fill="#fff" stroke="#111" stroke-width="2"/><rect x="301" y="195" width="37" height="29" rx="6" fill="#FFE3DB" stroke="#111" stroke-width="2"/><rect x="346" y="195" width="37" height="29" rx="6" fill="#fff" stroke="#111" stroke-width="2"/><rect x="391" y="195" width="37" height="29" rx="6" fill="#fff" stroke="#111" stroke-width="2"/><rect x="436" y="195" width="37" height="29" rx="6" fill="#fff" stroke="#111" stroke-width="2"/><rect x="166" y="232" width="37" height="29" rx="6" fill="#fff" stroke="#111" stroke-width="2"/><rect x="211" y="232" width="37" height="29" rx="6" fill="#111" stroke="#111" stroke-width="2"/><text x="229.5" y="252.5" text-anchor="middle" font-size="15" font-weight="800" fill="#fff">N</text><rect x="256" y="232" width="37" height="29" rx="6" fill="#fff" stroke="#111" stroke-width="2"/><rect x="301" y="232" width="37" height="29" rx="6" fill="#fff" stroke="#111" stroke-width="2"/><rect x="346" y="232" width="37" height="29" rx="6" fill="#fff" stroke="#111" stroke-width="2"/><rect x="391" y="232" width="37" height="29" rx="6" fill="#FF4D2E" stroke="#111" stroke-width="2"/><text x="409.5" y="252.5" text-anchor="middle" font-size="15" font-weight="800" fill="#fff">X</text><rect x="436" y="232" width="37" height="29" rx="6" fill="#fff" stroke="#111" stroke-width="2"/>
+    <use href="#fig" x="22" y="132" width="121.60000000000001" height="190" style="--f:#FFE3DB"/><use href="#fig" x="86" y="176" width="93.44" height="146" />
+    <path d="M116 222l40-52" class="ln"/><path d="M150 176l10-12 6 5-10 12z" fill="#FF4D2E" class="ln"/>
+    <path d="M10 322h500" class="ln"/>
+  </svg>
+  <div class="cfoot">
+    <div class="pills"><span>Aktuell</span><span>Planung</span><span>Einstellungen</span></div>
+    <div class="url"><svg class="ic " width="18" height="18" viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg> chunkyfire.github.io/dienstplan</div>
+  </div>
+</section>
+<section class="page ">
+  <header><div class="kick">Bevor du startest</div><h1>Was ist drin?</h1></header>
+  <main>
+  <div class="parts">
+    <div class="part"><span class="pid">A</span><div class="scr"><div class="bar"><i></i><i></i><i></i></div><div class="scrb"><div class="tabs"><span class="on">Aktuell</span><span class="">Planung</span><span class="">Einstellungen</span></div><div class="mini wkm"></div></div></div><h3>Aktuell</h3><p>Der gültige Plan, Woche für Woche. Und: wer einspringen kann.</p><span class="qty">1×</span></div>
+    <div class="part"><span class="pid">B</span><div class="scr"><div class="bar"><i></i><i></i><i></i></div><div class="scrb"><div class="tabs"><span class="">Aktuell</span><span class="on">Planung</span><span class="">Einstellungen</span></div><div class="mini calm"><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class="a"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class="a"></i><i class="a"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class="k"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></div></div></div><h3>Planung</h3><p>Deine Wünsche für die nächsten Monate. Nur du siehst sie.</p><span class="qty">1×</span></div>
+    <div class="part"><span class="pid">C</span><div class="scr"><div class="bar"><i></i><i></i><i></i></div><div class="scrb"><div class="tabs"><span class="">Aktuell</span><span class="">Planung</span><span class="on">Einstellungen</span></div><div class="mini setm"><i></i><i></i><i class="s"></i></div></div></div><h3>Einstellungen</h3><p>Dein Passwort. Für die Dienstplanung: Personal und Sicherung.</p><span class="qty">1×</span></div>
+  </div>
+  <h2>Du brauchst</h2>
+  <div class="need">
+    <div><div class="big"><svg class="ic " width="40" height="40" viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg></div><b>Link</b><span>PC, Tablet oder Handy</span></div>
+    <div><div class="big"><svg class="ic " width="40" height="40" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M16 7l3 3M14 9l2 2"/></svg></div><b>Seitenpasswort</b><span>für alle gleich, von der Dienstplanung</span></div>
+    <div><div class="big"><svg class="ic " width="40" height="40" viewBox="0 0 24 24"><path d="M3 8a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v2a2 2 0 0 0 0 4v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2a2 2 0 0 0 0-4z"/><path d="M14 6v2M14 11v2M14 16v2"/></svg></div><b>Einmal-Code</b><span>nur für dich, gilt genau einmal</span></div>
+  </div>
+  <h2>Wofür – und wofür nicht</h2>
+  <div class="yesno">
+    <div class="yes"><svg class="ic " width="26" height="26" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg><span>Dienste, Wünsche, Einspringen, Tauschen</span></div>
+    <div class="no"><svg class="ic " width="26" height="26" viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"/></svg><span>Patientendaten</span></div>
+    <div class="no"><svg class="ic " width="26" height="26" viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"/></svg><span>Medizinische Entscheidungen</span></div>
+  </div>
+  <p class="fine">Die Anwendung dient nur der internen Organisation der Personaleinsatzplanung. Sie ist kein Medizinprodukt und hat keine medizinische Zweckbestimmung. Vorschläge für Ersatz und Tausch sind Hilfen für die Absprache im Team; verbindlich ist, was mit der Dienstplanung vereinbart wird.</p>
+</main>
+  <footer><span class="pn">2</span><span class="wm">DIENSTPLAN</span></footer>
+</section>
+<section class="page ">
+  <header><div class="kick">Zugang</div><h1>Reinkommen</h1></header>
+  <main>
+  <div class="lane">
+    <div class="lh"><span class="tag">Stufe 1</span><h2>Ansehen</h2><span class="with"><svg class="ic " width="18" height="18" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M16 7l3 3M14 9l2 2"/></svg> mit dem Seitenpasswort</span></div>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><div class="art"><div class="scr"><div class="bar"><i></i><i></i><i></i></div><div class="scrb"><div class="addr"><svg class="ic " width="12" height="12" viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg><b></b></div></div></div></div><h3>Link öffnen</h3><p>Am besten als Lesezeichen speichern.</p></div>
+      <div class="step"><div class="num">2</div><div class="art"><div class="scr"><div class="bar"><i></i><i></i><i></i></div><div class="scrb"><div class="form"><i class="in">● ● ● ● ●</i><i class="btn">Öffnen</i></div></div></div></div><h3>Seitenpasswort</h3><p>Eintippen, „Öffnen“.</p></div>
+      <div class="step"><div class="num">3</div><div class="art"><div class="scr"><div class="bar"><i></i><i></i><i></i></div><div class="scrb"><div class="tabs"><span class="on">Aktuell</span><span class="">Planung</span><span class="">Einstellungen</span></div><div class="mini wkm"></div></div></div></div><h3>Plan sehen</h3><p>Dein Gerät merkt sich das 30 Tage.</p></div>
+    </div>
+  </div>
+  <div class="lane acc">
+    <div class="lh"><span class="tag">Stufe 2</span><h2>Wünschen</h2><span class="with"><svg class="ic " width="18" height="18" viewBox="0 0 24 24"><path d="M3 8a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v2a2 2 0 0 0 0 4v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2a2 2 0 0 0 0-4z"/><path d="M14 6v2M14 11v2M14 16v2"/></svg> mit deinem eigenen Konto</span></div>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><div class="art"><div class="scr"><div class="bar"><i></i><i></i><i></i></div><div class="scrb"><div class="tabs"><span class="">Aktuell</span><span class="on">Planung</span><span class="">Einstellungen</span></div><div class="form"><i class="in sel">Name ▾</i></div></div></div></div><h3>Namen wählen</h3><p>Reiter „Planung“, dann dich in der Liste suchen.</p></div>
+      <div class="step"><div class="num">2</div><div class="art"><div class="scr"><div class="bar"><i></i><i></i><i></i></div><div class="scrb"><div class="form"><i class="in code">K 7 X 2 …</i><i class="in">● ● ● ● ● ● ● ●</i><i class="btn a">Konto einrichten</i></div></div></div></div><h3>Konto einrichten</h3><p>Einmal-Code eingeben, eigenes Passwort ausdenken (mind. 8 Zeichen).</p></div>
+      <div class="step"><div class="num">3</div><div class="art"><div class="scr"><div class="bar"><i></i><i></i><i></i></div><div class="scrb"><div class="tabs"><span class="">Aktuell</span><span class="on">Planung</span><span class="">Einstellungen</span></div><div class="mini calm"><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class="a"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class="a"></i><i class="a"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></div></div></div></div><h3>Fertig</h3><p>Ab jetzt reichen Name und Passwort. Keine E-Mail nötig.</p></div>
+    </div>
+  </div>
+  <div class="row2">
+    <div class="note "><svg class="ic " width="22" height="22" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><div><b>5× falsch getippt?</b> 10 Minuten Pause, dann geht es weiter.</div></div>
+    <div class="note "><svg class="ic " width="22" height="22" viewBox="0 0 24 24"><path d="M3 8a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v2a2 2 0 0 0 0 4v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2a2 2 0 0 0 0-4z"/><path d="M14 6v2M14 11v2M14 16v2"/></svg><div><b>Passwort vergessen?</b> Die Dienstplanung gibt dir einen neuen Einmal-Code.</div></div>
+  </div>
+</main>
+  <footer><span class="pn">3</span><span class="wm">DIENSTPLAN</span></footer>
+</section>
+<section class="page ">
+  <header><div class="kick">Bereich A</div><h1>Aktuell</h1></header>
+  <main>
+  <div class="anno">
+    <div class="scr"><div class="bar"><i></i><i></i><i></i></div><div class="scrb"><div class="tabs"><span class="on">Aktuell</span><span class="">Planung</span><span class="">Einstellungen</span></div><div class="wktop"><span class="nav">‹</span><span class="nav">Heute</span><span class="nav">›</span><span class="sp"></span><span class="nav f">Alle</span><span class="nav f"><i class="dot" style="background:#FF4D2E"></i></span><span class="nav f"><i class="dot" style="background:#8A8A8A"></i></span><span class="nav f"><i class="dot" style="background:#fff"></i></span></div><div class="wk"><div class="wkh"></div><div class="wkh  ">Mo</div><div class="wkh  ">Di</div><div class="wkh  today">Mi</div><div class="wkh  ">Do</div><div class="wkh  ">Fr</div><div class="wkh we ">Sa</div><div class="wkh we ">So</div><div class="wkl">Notarzt</div><div class="wkc  "><div class="nm"><i class="dot" style="background:#FF4D2E"></i><b style="width:46%"></b></div></div><div class="wkc  "><div class="nm"><i class="dot" style="background:#8A8A8A"></i><b style="width:73%"></b></div></div><div class="wkc  "><div class="nm"><i class="dot" style="background:#fff"></i><b style="width:64%"></b></div></div><div class="wkc  "><div class="nm"><i class="dot" style="background:#fff"></i><b style="width:55%"></b></div></div><div class="wkc  "><div class="nm"><i class="dot" style="background:#FF4D2E"></i><b style="width:46%"></b></div></div><div class="wkc we "><div class="nm"><i class="dot" style="background:#8A8A8A"></i><b style="width:73%"></b></div></div><div class="wkc we "><div class="nm"><i class="dot" style="background:#fff"></i><b style="width:64%"></b></div></div><div class="wkl">Früh</div><div class="wkc  "><div class="nm"><i class="dot" style="background:#8A8A8A"></i><b style="width:73%"></b></div><div class="nm"><i class="dot" style="background:#fff"></i><b style="width:46%"></b></div><div class="nm"><i class="dot" style="background:#fff"></i><b style="width:55%"></b></div></div><div class="wkc  "><div class="nm"><i class="dot" style="background:#fff"></i><b style="width:64%"></b></div><div class="nm"><i class="dot" style="background:#fff"></i><b style="width:73%"></b></div><div class="nm"><i class="dot" style="background:#FF4D2E"></i><b style="width:46%"></b></div></div><div class="wkc  "><div class="nm"><i class="dot" style="background:#fff"></i><b style="width:55%"></b></div><div class="nm"><i class="dot" style="background:#FF4D2E"></i><b style="width:64%"></b></div><div class="nm"><i class="dot" style="background:#8A8A8A"></i><b style="width:73%"></b></div></div><div class="wkc  "><div class="nm"><i class="dot" style="background:#FF4D2E"></i><b style="width:46%"></b></div><div class="nm"><i class="dot" style="background:#8A8A8A"></i><b style="width:55%"></b></div><div class="nm"><i class="dot" style="background:#fff"></i><b style="width:64%"></b></div></div><div class="wkc  "><div class="nm"><i class="dot" style="background:#8A8A8A"></i><b style="width:73%"></b></div><div class="nm"><i class="dot" style="background:#fff"></i><b style="width:46%"></b></div><div class="nm"><i class="dot" style="background:#FF4D2E"></i><b style="width:55%"></b></div></div><div class="wkc we "><div class="nm"><i class="dot" style="background:#fff"></i><b style="width:64%"></b></div><div class="nm"><i class="dot" style="background:#FF4D2E"></i><b style="width:73%"></b></div><div class="nm"><i class="dot" style="background:#8A8A8A"></i><b style="width:46%"></b></div></div><div class="wkc we "><div class="nm"><i class="dot" style="background:#FF4D2E"></i><b style="width:55%"></b></div><div class="nm"><i class="dot" style="background:#8A8A8A"></i><b style="width:64%"></b></div><div class="nm"><i class="dot" style="background:#fff"></i><b style="width:73%"></b></div></div><div class="wkl">Zwischen</div><div class="wkc  "><div class="nm"><i class="dot" style="background:#fff"></i><b style="width:64%"></b></div></div><div class="wkc  "><div class="nm"><i class="dot" style="background:#fff"></i><b style="width:55%"></b></div></div><div class="wkc  "><div class="nm"><i class="dot" style="background:#FF4D2E"></i><b style="width:46%"></b></div></div><div class="wkc  "><div class="nm"><i class="dot" style="background:#8A8A8A"></i><b style="width:73%"></b></div></div><div class="wkc  "><div class="nm"><i class="dot" style="background:#fff"></i><b style="width:64%"></b></div></div><div class="wkc we "><div class="nm"><i class="dot" style="background:#FF4D2E"></i><b style="width:55%"></b></div></div><div class="wkc we "><div class="nm"><i class="dot" style="background:#8A8A8A"></i><b style="width:46%"></b></div></div><div class="wkl">Spät</div><div class="wkc  "><div class="nm"><i class="dot" style="background:#fff"></i><b style="width:55%"></b></div><div class="nm"><i class="dot" style="background:#FF4D2E"></i><b style="width:64%"></b></div></div><div class="wkc  "><div class="nm"><i class="dot" style="background:#FF4D2E"></i><b style="width:46%"></b></div><div class="nm"><i class="dot" style="background:#8A8A8A"></i><b style="width:55%"></b></div></div><div class="wkc  hit"><div class="nm"><i class="dot" style="background:#8A8A8A"></i><b style="width:73%"></b></div><div class="nm"><i class="dot" style="background:#fff"></i><b style="width:46%"></b></div></div><div class="wkc  "><div class="nm"><i class="dot" style="background:#fff"></i><b style="width:64%"></b></div><div class="nm"><i class="dot" style="background:#FF4D2E"></i><b style="width:73%"></b></div></div><div class="wkc  "><div class="nm"><i class="dot" style="background:#FF4D2E"></i><b style="width:55%"></b></div><div class="nm"><i class="dot" style="background:#8A8A8A"></i><b style="width:64%"></b></div></div><div class="wkc we "><div class="nm"><i class="dot" style="background:#8A8A8A"></i><b style="width:46%"></b></div><div class="nm"><i class="dot" style="background:#fff"></i><b style="width:55%"></b></div></div><div class="wkc we "><div class="nm"><i class="dot" style="background:#fff"></i><b style="width:73%"></b></div><div class="nm"><i class="dot" style="background:#fff"></i><b style="width:46%"></b></div></div><div class="wkl">Nacht</div><div class="wkc  "><div class="nm"><i class="dot" style="background:#FF4D2E"></i><b style="width:46%"></b></div></div><div class="wkc  "><div class="nm"><i class="dot" style="background:#8A8A8A"></i><b style="width:73%"></b></div></div><div class="wkc  "><div class="nm"><i class="dot" style="background:#fff"></i><b style="width:64%"></b></div></div><div class="wkc  "><div class="nm"><i class="dot" style="background:#FF4D2E"></i><b style="width:55%"></b></div></div><div class="wkc  "><div class="nm"><i class="dot" style="background:#8A8A8A"></i><b style="width:46%"></b></div></div><div class="wkc we "><div class="nm"><i class="dot" style="background:#fff"></i><b style="width:73%"></b></div></div><div class="wkc we "><div class="nm"><i class="dot" style="background:#fff"></i><b style="width:64%"></b></div></div><div class="wkl free">Wer kann<br>einspringen?</div><div class="wkc free "><div class="nm first"><i class="dot" style="background:#FF4D2E"></i><b style="width:60%"></b></div><div class="nm first"><i class="dot" style="background:#fff"></i><b style="width:48%"></b></div><div class="nm"><i class="dot" style="background:#8A8A8A"></i><b style="width:55%"></b></div></div><div class="wkc free "><div class="nm first"><i class="dot" style="background:#FF4D2E"></i><b style="width:60%"></b></div><div class="nm first"><i class="dot" style="background:#fff"></i><b style="width:48%"></b></div><div class="nm"><i class="dot" style="background:#8A8A8A"></i><b style="width:55%"></b></div></div><div class="wkc free "><div class="nm first"><i class="dot" style="background:#FF4D2E"></i><b style="width:60%"></b></div><div class="nm first"><i class="dot" style="background:#fff"></i><b style="width:48%"></b></div><div class="nm"><i class="dot" style="background:#8A8A8A"></i><b style="width:55%"></b></div></div><div class="wkc free "><div class="nm first"><i class="dot" style="background:#FF4D2E"></i><b style="width:60%"></b></div><div class="nm first"><i class="dot" style="background:#fff"></i><b style="width:48%"></b></div><div class="nm"><i class="dot" style="background:#8A8A8A"></i><b style="width:55%"></b></div></div><div class="wkc free "><div class="nm first"><i class="dot" style="background:#FF4D2E"></i><b style="width:60%"></b></div><div class="nm first"><i class="dot" style="background:#fff"></i><b style="width:48%"></b></div><div class="nm"><i class="dot" style="background:#8A8A8A"></i><b style="width:55%"></b></div></div><div class="wkc free we"><div class="nm first"><i class="dot" style="background:#FF4D2E"></i><b style="width:60%"></b></div><div class="nm first"><i class="dot" style="background:#fff"></i><b style="width:48%"></b></div><div class="nm"><i class="dot" style="background:#8A8A8A"></i><b style="width:55%"></b></div></div><div class="wkc free we"><div class="nm first"><i class="dot" style="background:#FF4D2E"></i><b style="width:60%"></b></div><div class="nm first"><i class="dot" style="background:#fff"></i><b style="width:48%"></b></div><div class="nm"><i class="dot" style="background:#8A8A8A"></i><b style="width:55%"></b></div></div></div></div></div>
+    <span class="co p1">1</span><span class="co p2">2</span><span class="co p3">3</span><span class="co p4">4</span><span class="co p5">5</span><span class="co p6">6</span>
+  </div>
+  <div class="legend">
+    <div><span class="co">1</span><p><b>Woche wechseln.</b> Pfeile, oder zurück mit „Heute“.</p></div>
+    <div><span class="co">2</span><p><b>Eine Ebene einblenden.</b> Alle, Oberarzt, Facharzt, Assistenzarzt.</p></div>
+    <div><span class="co">3</span><p><b>Dienste von oben nach unten:</b> Notarzt, Früh, Zwischen, Spät, Nacht.</p></div>
+    <div><span class="co">4</span><p><b>Punkt = Ebene.</b> <i class="dot" style="background:#111"></i> Chefarzt <i class="dot" style="background:#FF4D2E"></i> Oberarzt <i class="dot" style="background:#8A8A8A"></i> Facharzt <i class="dot" style="background:#fff"></i> Assistenzarzt</p></div>
+    <div><span class="co">5</span><p><b>Dienst antippen:</b> „Fällt aus? Lösungen anzeigen“.</p></div>
+    <div><span class="co">6</span><p><b>Wer kann einspringen?</b> Die ersten zwei sind laut Einspringliste als Nächste dran.</p></div>
+  </div>
+  <h2>Wer frei hat, bekommt ein Etikett</h2>
+  <div class="chips">
+    <div class="chip ok"><svg class="ic " width="24" height="24" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg><b>kann einspringen</b><span>frei, genug Ruhezeit</span></div>
+    <div class="chip"><svg class="ic " width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><b>eingeschränkt</b><span>z. B. nach Spät erst ab Mittag</span></div>
+    <div class="chip"><svg class="ic " width="24" height="24" viewBox="0 0 24 24"><path d="M5 11V8a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v3"/><path d="M3 12a2 2 0 0 1 4 0v3h10v-3a2 2 0 0 1 4 0v6H3z"/><path d="M6 18v2M18 18v2"/></svg><b>Freiwunsch (X)</b><span>wollte den Tag frei haben</span></div>
+    <div class="chip off"><svg class="ic " width="24" height="24" viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"/></svg><b>nicht einsetzbar</b><span>Ruhezeit, Urlaub, krank …</span></div>
+  </div>
+  <h2>Unter dem Plan</h2>
+  <div class="row3 flat">
+    <div class="note "><svg class="ic " width="22" height="22" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><circle cx="17.5" cy="9" r="2.5"/><path d="M17 14.5a5 5 0 0 1 4.5 5"/></svg><div><b>Einspringliste.</b> Aufklappen, Reihenfolge ansehen und ändern.</div></div>
+    <div class="note "><svg class="ic " width="22" height="22" viewBox="0 0 24 24"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 16v4M17 18h4"/></svg><div><b>Ausfall-Assistent.</b> Frage stellen, er bezieht sich auf die gezeigte Woche.</div></div>
+    <div class="note "><svg class="ic " width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><div><b>Legende &amp; Schichtzeiten.</b> Alle Kürzel mit Uhrzeiten.</div></div>
+  </div>
+</main>
+  <footer><span class="pn">4</span><span class="wm">DIENSTPLAN</span></footer>
+</section>
+<section class="page ">
+  <header><div class="kick">Bereich A</div><h1>Jemand fällt aus</h1></header>
+  <main>
+  <div class="steps three">
+    <div class="step"><div class="num">1</div><div class="art"><svg viewBox="0 0 150 90"><rect x="18" y="14" width="114" height="44" rx="9" fill="#FFE3DB" class="ln"/><circle cx="36" cy="36" r="5" fill="#FF4D2E" class="ln"/><path d="M48 36h62" class="ln" stroke-width="6"/><g transform="translate(92 34) scale(1.9)" class="icg"><path d="M9 11V5a2 2 0 0 1 4 0v6"/><path d="M13 10a2 2 0 0 1 4 0v2a2 2 0 0 1 3 1.5V16a6 6 0 0 1-6 6h-1a6 6 0 0 1-5-2.7L5 15a1.7 1.7 0 0 1 2.7-2L9 14"/></g></svg></div><h3>Dienst antippen</h3><p>Im Plan auf den Dienst, der ausfällt.</p></div>
+    <div class="step"><div class="num">2</div><div class="art"><svg viewBox="0 0 150 90"><rect x="24" y="10" width="102" height="19" rx="6" fill="#FFE3DB" class="ln"/><text x="36" y="24" font-size="11" font-weight="800">1</text><path d="M50 19.5h62" class="ln"/><rect x="24" y="35" width="102" height="19" rx="6" fill="#fff" class="ln"/><text x="36" y="49" font-size="11" font-weight="800">2</text><path d="M50 44.5h48" class="ln"/><rect x="24" y="60" width="102" height="19" rx="6" fill="#fff" class="ln"/><text x="36" y="74" font-size="11" font-weight="800">3</text><path d="M50 69.5h34" class="ln"/></svg></div><h3>Lösungen lesen</h3><p>Sortiert von einfach nach aufwendig.</p></div>
+    <div class="step"><div class="num">3</div><div class="art"><svg viewBox="0 0 150 90"><use href="#fig" x="30" y="8" width="48.64" height="76" style="--f:#FFE3DB"/><g transform="translate(84 20) scale(2)" class="icg"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A15 15 0 0 1 3 6a2 2 0 0 1 2-2z"/></g></svg></div><h3>Anrufen</h3><p>Bei jeder Lösung steht, wen.</p></div>
+  </div>
+  <h2>Vier Arten von Lösung</h2>
+  <div class="sol">
+    <div><span class="sn">1</span><h3>Direkter Ersatz</h3>
+      <svg viewBox="0 0 230 110"><use href="#fig" x="14" y="8" width="39.68" height="62" style="--f:#FFE3DB"/><text x="34" y="86" text-anchor="middle" class="sl">frei</text><rect x="150" y="22" width="46" height="30" rx="7" fill="#FF4D2E" class="ln"/><text x="173" y="43" text-anchor="middle" font-size="14" font-weight="800" fill="#fff">S</text><path d="M64 38h78" class="ln" marker-end="url(#ah)"/></svg>
+      <p>Eine Person anrufen.</p></div>
+    <div><span class="sn">2</span><h3>Tausch am selben Tag</h3>
+      <svg viewBox="0 0 230 110"><use href="#fig" x="14" y="8" width="39.68" height="62" style="--f:#FFE3DB"/><text x="34" y="86" text-anchor="middle" class="sl">frei</text><rect x="92" y="6" width="46" height="30" rx="7" fill="#fff" class="ln"/><text x="115" y="27" text-anchor="middle" font-size="14" font-weight="800" fill="#111">F</text><rect x="170" y="6" width="46" height="30" rx="7" fill="#FF4D2E" class="ln"/><text x="193" y="27" text-anchor="middle" font-size="14" font-weight="800" fill="#fff">S</text><use href="#fig" x="96" y="44" width="39.68" height="62" /><path d="M140 21h24" class="ln" marker-end="url(#ah)"/><path d="M58 24l28-4" class="ln" marker-end="url(#ah)"/></svg>
+      <p>Jemand wechselt die Schicht, ein Freier füllt nach.</p></div>
+    <div><span class="sn">3</span><h3>Tausch zwischen zwei Tagen</h3>
+      <svg viewBox="0 0 230 110"><text x="66" y="14" text-anchor="middle" class="sl">Mi</text><text x="166" y="14" text-anchor="middle" class="sl">Do</text><rect x="20" y="20" width="92" height="82" rx="10" class="ln" fill="#fff"/><rect x="120" y="20" width="92" height="82" rx="10" class="ln" fill="#fff"/><rect x="43" y="30" width="46" height="30" rx="7" fill="#FF4D2E" class="ln"/><text x="66" y="51" text-anchor="middle" font-size="14" font-weight="800" fill="#fff">S</text><rect x="143" y="30" width="46" height="30" rx="7" fill="#fff" class="ln"/><text x="166" y="51" text-anchor="middle" font-size="14" font-weight="800" fill="#111">F</text><use href="#fig" x="48" y="62" width="23.04" height="36" style="--f:#FFE3DB"/><use href="#fig" x="148" y="62" width="23.04" height="36" /><path d="M78 82h64" class="ln" marker-end="url(#ah)" marker-start="url(#ah)"/></svg>
+      <p>Der Ersatz gibt dafür einen Dienst am Nachbartag ab.</p></div>
+    <div><span class="sn">4</span><h3>Ringtausch</h3>
+      <svg viewBox="0 0 230 110"><use href="#fig" x="98" y="0" width="29.44" height="46" style="--f:#FFE3DB"/><use href="#fig" x="36" y="58" width="29.44" height="46" /><use href="#fig" x="160" y="58" width="29.44" height="46" /><path d="M96 30Q64 36 58 56" class="ln" marker-end="url(#ah)" fill="none"/><path d="M76 92h78" class="ln" marker-end="url(#ah)"/><path d="M178 56Q172 36 136 30" class="ln" marker-end="url(#ah)" fill="none"/></svg>
+      <p>Drei Personen verschieben sich.</p></div>
+  </div>
+  <div class="row2">
+    <div class="note "><svg class="ic " width="22" height="22" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg><div><b>Nur was erlaubt ist.</b> Jede Lösung hält 11 Stunden Ruhezeit ein und höchstens 24 Stunden am Stück. Knappe Ruhezeiten stehen als Warnung dabei.</div></div>
+    <div class="note acc"><svg class="ic " width="22" height="22" viewBox="0 0 24 24"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 16v4M17 18h4"/></svg><div><b>Lieber fragen?</b> Unter dem Plan sitzt der Ausfall-Assistent. Frag in normaler Sprache, er nutzt dieselbe Prüfung und erfindet nichts.</div></div>
+  </div>
+</main>
+  <footer><span class="pn">5</span><span class="wm">DIENSTPLAN</span></footer>
+</section>
+<section class="page ">
+  <header><div class="kick">Bereich A</div><h1>Die Einspringliste</h1></header>
+  <main>
+  <p class="lead">Jede Ebene hat ihre eigene Schlange. Vorne steht, wer als Nächstes gefragt wird.</p>
+  <svg class="queue" viewBox="0 0 660 250">
+    <text x="64" y="26" text-anchor="middle" class="sl b">als Nächste dran</text>
+    <path d="M22 34h84" class="ln" stroke="#FF4D2E"/>
+    <use href="#fig" x="22" y="46" width="76.8" height="120" style="--f:#FF4D2E"/><circle cx="60" cy="186" r="13" fill="#111" class="ln"/><text x="60" y="191.5" text-anchor="middle" font-size="14" font-weight="800" fill="#fff">1</text><use href="#fig" x="118" y="46" width="76.8" height="120" style="--f:#FF4D2E"/><circle cx="156" cy="186" r="13" fill="#111" class="ln"/><text x="156" y="191.5" text-anchor="middle" font-size="14" font-weight="800" fill="#fff">2</text><use href="#fig" x="214" y="46" width="76.8" height="120" /><circle cx="252" cy="186" r="13" fill="#fff" class="ln"/><text x="252" y="191.5" text-anchor="middle" font-size="14" font-weight="800" fill="#111">3</text><use href="#fig" x="310" y="46" width="76.8" height="120" /><circle cx="348" cy="186" r="13" fill="#fff" class="ln"/><text x="348" y="191.5" text-anchor="middle" font-size="14" font-weight="800" fill="#111">4</text><use href="#fig" x="406" y="46" width="76.8" height="120" /><circle cx="444" cy="186" r="13" fill="#fff" class="ln"/><text x="444" y="191.5" text-anchor="middle" font-size="14" font-weight="800" fill="#111">5</text><use href="#fig" x="502" y="46" width="76.8" height="120" style="--f:#FFE3DB"/><circle cx="540" cy="186" r="13" fill="#fff" class="ln"/><text x="540" y="191.5" text-anchor="middle" font-size="14" font-weight="800" fill="#111">6</text>
+    <path d="M60 212Q60 244 180 244H470Q540 244 540 214" fill="none" stroke="#FF4D2E" stroke-width="3.2" stroke-linecap="round" stroke-dasharray="2 9" marker-end="url(#aha)"/>
+    <text x="300" y="234" text-anchor="middle" class="sl b" fill="#FF4D2E">eingesprungen → ans Ende</text>
+    <path d="M610 60v110" class="ln" stroke-dasharray="2 8"/>
+  </svg>
+  <div class="lv3"><span><i class="dot" style="background:#FF4D2E"></i> Oberarzt</span><span><i class="dot" style="background:#8A8A8A"></i> Facharzt</span><span><i class="dot" style="background:#fff"></i> Assistenzarzt</span><em>drei Listen, eine pro Ebene</em></div>
+  <h2>Einspringen vermerken</h2>
+  <div class="steps three">
+    <div class="step"><div class="num">1</div><div class="art"><svg viewBox="0 0 150 80"><rect x="18" y="12" width="114" height="22" rx="7" fill="#FFE3DB" class="ln"/><circle cx="32" cy="23" r="4.5" fill="#FF4D2E" class="ln"/><path d="M44 23h50" class="ln" stroke-width="5"/><rect x="18" y="40" width="114" height="22" rx="7" fill="#fff" class="ln"/><path d="M44 51h38" class="ln" stroke-width="5"/><g transform="translate(96 22) scale(1.7)" class="icg"><path d="M9 11V5a2 2 0 0 1 4 0v6"/><path d="M13 10a2 2 0 0 1 4 0v2a2 2 0 0 1 3 1.5V16a6 6 0 0 1-6 6h-1a6 6 0 0 1-5-2.7L5 15a1.7 1.7 0 0 1 2.7-2L9 14"/></g></svg></div><h3>Namen antippen</h3><p>Am Tag, unter „Wer kann einspringen?“.</p></div>
+    <div class="step"><div class="num">2</div><div class="art"><svg viewBox="0 0 150 80"><rect x="14" y="10" width="122" height="60" rx="10" fill="#fff" class="ln"/><path d="M28 28h70" class="ln" stroke-width="5"/><rect x="26" y="42" width="60" height="18" rx="9" fill="#FF4D2E" class="ln"/><text x="56" y="55" text-anchor="middle" font-size="10" font-weight="800" fill="#fff">Ja</text><rect x="92" y="42" width="34" height="18" rx="9" fill="#fff" class="ln"/></svg></div><h3>Bestätigen</h3><p>„Ja, ans Ende der Liste“.</p></div>
+    <div class="step"><div class="num">3</div><div class="art"><svg viewBox="0 0 150 80"><rect x="16" y="14" width="25" height="52" rx="7" fill="#fff" class="ln"/><circle cx="28.5" cy="27" r="4" fill="#FF4D2E" class="ln"/><circle cx="28.5" cy="40" r="4" fill="#FFE3DB" class="ln"/><circle cx="28.5" cy="53" r="4" fill="#fff" class="ln"/><rect x="47" y="14" width="25" height="52" rx="7" fill="#fff" class="ln"/><circle cx="59.5" cy="27" r="4" fill="#FFE3DB" class="ln"/><circle cx="59.5" cy="40" r="4" fill="#FF4D2E" class="ln"/><circle cx="59.5" cy="53" r="4" fill="#fff" class="ln"/><rect x="78" y="14" width="25" height="52" rx="7" fill="#fff" class="ln"/><circle cx="90.5" cy="27" r="4" fill="#FF4D2E" class="ln"/><circle cx="90.5" cy="40" r="4" fill="#FFE3DB" class="ln"/><circle cx="90.5" cy="53" r="4" fill="#fff" class="ln"/><rect x="109" y="14" width="25" height="52" rx="7" fill="#fff" class="ln"/><circle cx="121.5" cy="27" r="4" fill="#FFE3DB" class="ln"/><circle cx="121.5" cy="40" r="4" fill="#FF4D2E" class="ln"/><circle cx="121.5" cy="53" r="4" fill="#fff" class="ln"/></svg></div><h3>Alles rechnet neu</h3><p>Sofort, für alle Tage und für alle.</p></div>
+  </div>
+  <div class="row2">
+    <div class="note "><svg class="ic " width="22" height="22" viewBox="0 0 24 24"><path d="M4 20l1-4L16 5l3 3L8 19z"/><path d="M14 7l3 3"/></svg><div><b>Reihenfolge von Hand ändern:</b> unter dem Plan „Einspringliste“ aufklappen, mit den Pfeilen verschieben. Geht mit dem Seitenpasswort.</div></div>
+    <div class="note acc"><svg class="ic " width="22" height="22" viewBox="0 0 24 24"><path d="M5 3h11l4 4v14H4V4a1 1 0 0 1 1-1z"/><path d="M8 3v5h7V3M7 21v-7h10v7"/></svg><div><b>Nichts geht verloren.</b> Jedes Einspringen wird gespeichert und zählt bei der Planung der nächsten Monate mit.</div></div>
+  </div>
+</main>
+  <footer><span class="pn">6</span><span class="wm">DIENSTPLAN</span></footer>
+</section>
+<section class="page ">
+  <header><div class="kick">Bereich B</div><h1>Wünsche abgeben</h1></header>
+  <main>
+  <div class="steps three">
+    <div class="step"><div class="num">1</div><div class="art"><svg viewBox="0 0 150 80"><rect x="40" y="26" width="70" height="28" rx="14" fill="#fff" class="ln"/><text x="75" y="45" text-anchor="middle" font-size="12" font-weight="800">Monat</text><path d="M26 40l-10 0M16 40l6-6M16 40l6 6" class="ln"/><path d="M124 40h10M134 40l-6-6M134 40l-6 6" class="ln"/></svg></div><h3>Monat wählen</h3><p>Vorgeschlagen ist der nächste Monat.</p></div>
+    <div class="step"><div class="num">2</div><div class="art"><svg viewBox="0 0 150 80"><rect x="8" y="24" width="23" height="26" rx="7" fill="#FF4D2E" class="ln"/><text x="19.5" y="42" text-anchor="middle" font-size="10.5" font-weight="800" fill="#fff">X</text><rect x="35.5" y="24" width="23" height="26" rx="7" fill="#fff" class="ln"/><text x="47" y="42" text-anchor="middle" font-size="10.5" font-weight="800" fill="#111">U</text><rect x="63" y="24" width="23" height="26" rx="7" fill="#fff" class="ln"/><text x="74.5" y="42" text-anchor="middle" font-size="10.5" font-weight="800" fill="#111">FB</text><rect x="90.5" y="24" width="23" height="26" rx="7" fill="#fff" class="ln"/><text x="102" y="42" text-anchor="middle" font-size="10.5" font-weight="800" fill="#111">F</text><rect x="118" y="24" width="23" height="26" rx="7" fill="#fff" class="ln"/><text x="129.5" y="42" text-anchor="middle" font-size="10.5" font-weight="800" fill="#111">S</text><path d="M19 58v10" class="ln" marker-start="url(#ah)"/></svg></div><h3>Stift wählen</h3><p>Oben in der Leiste: welcher Wunsch?</p></div>
+    <div class="step"><div class="num">3</div><div class="art"><svg viewBox="0 0 150 80"><rect x="12" y="12" width="21" height="22" rx="6" fill="#fff" class="ln"/><rect x="38" y="12" width="21" height="22" rx="6" fill="#FF4D2E" class="ln"/><text x="48.5" y="27.5" text-anchor="middle" font-size="10" font-weight="800" fill="#fff">X</text><rect x="64" y="12" width="21" height="22" rx="6" fill="#FF4D2E" class="ln"/><text x="74.5" y="27.5" text-anchor="middle" font-size="10" font-weight="800" fill="#fff">X</text><rect x="90" y="12" width="21" height="22" rx="6" fill="#fff" class="ln"/><rect x="116" y="12" width="21" height="22" rx="6" fill="#fff" class="ln"/><rect x="12" y="40" width="21" height="22" rx="6" fill="#fff" class="ln"/><rect x="38" y="40" width="21" height="22" rx="6" fill="#fff" class="ln"/><rect x="64" y="40" width="21" height="22" rx="6" fill="#FF4D2E" class="ln"/><text x="74.5" y="55.5" text-anchor="middle" font-size="10" font-weight="800" fill="#fff">X</text><rect x="90" y="40" width="21" height="22" rx="6" fill="#fff" class="ln"/><rect x="116" y="40" width="21" height="22" rx="6" fill="#fff" class="ln"/><g transform="translate(96 40) scale(1.6)" class="icg"><path d="M9 11V5a2 2 0 0 1 4 0v6"/><path d="M13 10a2 2 0 0 1 4 0v2a2 2 0 0 1 3 1.5V16a6 6 0 0 1-6 6h-1a6 6 0 0 1-5-2.7L5 15a1.7 1.7 0 0 1 2.7-2L9 14"/></g></svg></div><h3>Tage antippen</h3><p>Speichert sofort. Nochmal antippen nimmt den Wunsch zurück.</p></div>
+  </div>
+  <h2>Deine neun Stifte</h2>
+  <div class="tiles">
+    <div class="tg"><em>Ich bin nicht da</em><div><div class="tile a"><b>X</b><span>Wunschfrei</span><svg class="ic " width="20" height="20" viewBox="0 0 24 24"><path d="M5 11V8a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v3"/><path d="M3 12a2 2 0 0 1 4 0v3h10v-3a2 2 0 0 1 4 0v6H3z"/><path d="M6 18v2M18 18v2"/></svg></div><div class="tile a"><b>U</b><span>Urlaub</span><svg class="ic " width="20" height="20" viewBox="0 0 24 24"><path d="M12 21c0-5 .5-8 2-11"/><path d="M14 10c-3-3-7-2-9 0 3-1 6 0 9 0zM14 10c0-4 3-6 6-6-2 1-4 3-6 6zM14 10c3-1 6 0 7 3-2-2-4-3-7-3zM14 10c-2-3-1-6 1-8 0 3 0 5-1 8z"/></svg></div><div class="tile a"><b>FB</b><span>Fortbildung</span><svg class="ic " width="20" height="20" viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 21a2 2 0 0 1 2-2h13v2z"/></svg></div></div></div>
+    <div class="tg"><em>Diesen Dienst hätte ich gern</em><div><div class="tile "><b>F</b><span>Früh</span><svg class="ic " width="20" height="20" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg></div><div class="tile "><b>Z</b><span>Zwischen</span><svg class="ic " width="20" height="20" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><div class="tile "><b>S</b><span>Spät</span><svg class="ic " width="20" height="20" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><div class="tile k"><b>N</b><span>Nacht</span><svg class="ic " width="20" height="20" viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5z"/></svg></div></div></div>
+    <div class="tg"><em>Arbeiten ja, aber so nicht</em><div><div class="tile n"><b>!S</b><span>kein Spät</span><svg class="ic " width="20" height="20" viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"/></svg></div><div class="tile n"><b>!N</b><span>keine Nacht</span><svg class="ic " width="20" height="20" viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"/></svg></div></div></div>
+  </div>
+  <div class="row2">
+    <div class="note "><svg class="ic " width="22" height="22" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><div><b>Abgabe bis …</b> steht über dem Kalender. Ist die Wunschabgabe geschlossen, kannst du noch ansehen, aber nicht mehr ändern.</div></div>
+    <div class="note acc"><svg class="ic " width="22" height="22" viewBox="0 0 24 24"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 16v4M17 18h4"/></svg><div><b>Wünsche sind Wünsche.</b> Sie werden so weit wie möglich berücksichtigt. Eine Garantie gibt es nicht.</div></div>
+  </div>
+</main>
+  <footer><span class="pn">7</span><span class="wm">DIENSTPLAN</span></footer>
+</section>
+<section class="page ">
+  <header><div class="kick">Bereich B</div><h1>Hinweise &amp; Datenschutz</h1></header>
+  <main>
+  <p class="lead">Du siehst, ob es an einem Tag eng wird. Du siehst nie, wer dahintersteckt.</p>
+  <div class="hints">
+    <div><div class="dayc "><i>12</i><b>X</b></div><h3>Frei</h3><p>Kein Hinweis: bisher hat niemand sonst aus deiner Ebene etwas eingetragen.</p></div>
+    <div><div class="dayc some"><i>13</i><b>X</b><span>1 weiterer Freiwunsch</span></div><h3>Grau</h3><p>Andere haben auch Wünsche. Voraussichtlich machbar.</p></div>
+    <div><div class="dayc tight"><i>14</i><b>X</b><span>2× Urlaub/Fortbildung</span></div><h3>Rot</h3><p>Mindestens ein Drittel deiner Ebene ist schon weg. Es wird eng, lieber ausweichen.</p></div>
+  </div>
+  <h2>Wer sieht was?</h2>
+  <div class="see">
+    <div class="who"><svg viewBox="0 0 70 100"><use href="#fig" x="3" y="0" width="64" height="100" style="--f:#FF4D2E"/></svg><b>Du</b></div>
+    <div class="what"><svg class="ic " width="30" height="30" viewBox="0 0 24 24"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg><p><b>Deine Wünsche.</b> Sehen, ändern, löschen. Für andere eintragen geht technisch nicht.</p></div>
+    <div class="who"><svg viewBox="0 0 110 100"><use href="#fig" x="0" y="8" width="58.88" height="92" /><use href="#fig" x="46" y="8" width="58.88" height="92" /></svg><b>Deine Ebene</b></div>
+    <div class="what"><svg class="ic " width="30" height="30" viewBox="0 0 24 24"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/><path d="M4 3l16 18"/></svg><p><b>Nur Zahlen.</b> Keine Namen, keine Notizen. „2 weitere Freiwünsche“, mehr nicht.</p></div>
+    <div class="who"><svg viewBox="0 0 70 100"><use href="#fig" x="3" y="0" width="64" height="100" style="--f:#FFE3DB"/></svg><b>Dienstplanung</b></div>
+    <div class="what"><svg class="ic " width="30" height="30" viewBox="0 0 24 24"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg><p><b>Alle Wünsche mit Namen.</b> Ohne das lässt sich kein Plan bauen.</p></div>
+  </div>
+  <div class="row3">
+    <div class="note "><svg class="ic " width="22" height="22" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><circle cx="17.5" cy="9" r="2.5"/><path d="M17 14.5a5 5 0 0 1 4.5 5"/></svg><div><b>Kleine Ebene?</b> Bei weniger als drei anderen gibt es keinen Hinweis. Eine Zahl würde sonst auf eine Person zeigen.</div></div>
+    <div class="note "><svg class="ic " width="22" height="22" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><div><b>Passwörter</b> liegen nie im Klartext vor. Auch die Dienstplanung kann sie nicht lesen.</div></div>
+    <div class="note "><svg class="ic " width="22" height="22" viewBox="0 0 24 24"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 16v4M17 18h4"/></svg><div><b>Der Assistent</b> schickt für eine Antwort Namen und Dienste an einen externen KI-Dienst. Wünsche nie.</div></div>
+  </div>
+</main>
+  <footer><span class="pn">8</span><span class="wm">DIENSTPLAN</span></footer>
+</section>
+<section class="page ">
+  <header><div class="kick">Nur mit Planer-Recht</div><h1>Für die Dienstplanung</h1></header>
+  <main>
+  <div class="cycle">
+    <svg viewBox="0 0 300 300">
+      <circle cx="150" cy="150" r="104" fill="none" stroke="#111" stroke-width="3" stroke-dasharray="2 10" stroke-linecap="round"/>
+      <circle cx="150" cy="46" r="30" fill="#fff" class="ln"/><g transform="translate(134.4 30.4) scale(1.3)" class="icg "><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><circle cx="17.5" cy="9" r="2.5"/><path d="M17 14.5a5 5 0 0 1 4.5 5"/></g><circle cx="174" cy="22" r="11" fill="#111"/><text x="174" y="26.5" text-anchor="middle" font-size="12.5" font-weight="800" fill="#fff">1</text><circle cx="240.06664199358164" cy="98" r="30" fill="#fff" class="ln"/><g transform="translate(224.46664199358165 82.4) scale(1.3)" class="icg "><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></g><circle cx="264.06664199358164" cy="74" r="11" fill="#111"/><text x="264.06664199358164" y="78.5" text-anchor="middle" font-size="12.5" font-weight="800" fill="#fff">2</text><circle cx="240.06664199358164" cy="202" r="30" fill="#fff" class="ln"/><g transform="translate(224.46664199358165 186.4) scale(1.3)" class="icg "><path d="M12 3v12M7 10l5 5 5-5M4 20h16"/></g><circle cx="264.06664199358164" cy="178" r="11" fill="#111"/><text x="264.06664199358164" y="182.5" text-anchor="middle" font-size="12.5" font-weight="800" fill="#fff">3</text><circle cx="150" cy="254" r="30" fill="#FFE3DB" class="ln"/><g transform="translate(134.4 238.4) scale(1.3)" class="icg "><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M9 9h6v6H9z"/><path d="M12 1v3M12 20v3M1 12h3M20 12h3"/></g><circle cx="174" cy="230" r="11" fill="#111"/><text x="174" y="234.5" text-anchor="middle" font-size="12.5" font-weight="800" fill="#fff">4</text><circle cx="59.93335800641837" cy="202" r="30" fill="#fff" class="ln"/><g transform="translate(44.33335800641837 186.4) scale(1.3)" class="icg "><path d="M12 16V4M7 9l5-5 5 5M4 20h16"/></g><circle cx="83.93335800641837" cy="178" r="11" fill="#111"/><text x="83.93335800641837" y="182.5" text-anchor="middle" font-size="12.5" font-weight="800" fill="#fff">5</text><circle cx="59.93335800641839" cy="97.99999999999999" r="30" fill="#FF4D2E" class="ln"/><g transform="translate(44.333358006418386 82.39999999999999) scale(1.3)" class="icg w"><path d="M9 13V9a3 3 0 1 1 6 0v4"/><rect x="5" y="13" width="14" height="4" rx="1"/><path d="M4 21h16"/></g><circle cx="83.93335800641839" cy="73.99999999999999" r="11" fill="#111"/><text x="83.93335800641839" y="78.49999999999999" text-anchor="middle" font-size="12.5" font-weight="800" fill="#fff">6</text>
+      <text x="150" y="143" text-anchor="middle" font-size="15" font-weight="800">jeden</text><text x="150" y="163" text-anchor="middle" font-size="15" font-weight="800">Monat</text>
+    </svg>
+    <ol><li><span class="co">1</span><p><b>Wünsche sammeln.</b> Übersicht aller Personen und Tage. „Abgabe bis“ setzen.</p></li><li><span class="co">2</span><p><b>Schließen.</b> „Wunschabgabe schließen“. Wieder öffnen geht jederzeit.</p></li><li><span class="co">3</span><p><b>Paket laden.</b> „Planungspaket herunterladen“: Wünsche, Personal, letzte Dienste.</p></li><li><span class="co">4</span><p><b>Plan bauen.</b> Das Paket geht in den Plan-Generator. Heraus kommt der Monatsplan.</p></li><li><span class="co">5</span><p><b>Entwurf hochladen.</b> Als PDF. Nur die Dienstplanung sieht ihn: „Ansehen“.</p></li><li><span class="co">6</span><p><b>Verabschieden.</b> Jetzt sehen ihn alle unter „Aktuell“. „Zurück zum Entwurf“ blendet ihn wieder aus.</p></li></ol>
+  </div>
+  <p class="fine up">Alles davon im Reiter „Planung“, Abschnitt „Dienstplanung“. Ein korrigierter Plan wird einfach neu hochgeladen und ersetzt den Monat.</p>
+  <h2>Personal pflegen</h2>
+  <div class="steps three low">
+    <div class="step"><div class="num">1</div><div class="art"><svg viewBox="0 0 150 70"><use href="#fig" x="46" y="4" width="39.68" height="62" style="--f:#FFE3DB"/><circle cx="104" cy="24" r="13" fill="#FF4D2E" class="ln"/><path d="M104 17v14M97 24h14" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg></div><h3>Neue Person</h3><p>Einstellungen → Personal: Name, Ebene, Stelle. „Anlegen“.</p></div>
+    <div class="step"><div class="num">2</div><div class="art"><svg viewBox="0 0 150 70"><g transform="translate(40 0) scale(2.9)" class="icg"><path d="M3 8a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v2a2 2 0 0 0 0 4v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2a2 2 0 0 0 0-4z"/><path d="M14 6v2M14 11v2M14 16v2"/></g></svg></div><h3>Code erzeugen</h3><p>„Neuen Code erzeugen“. Er gilt einmal.</p></div>
+    <div class="step"><div class="num">3</div><div class="art"><svg viewBox="0 0 150 70"><use href="#fig" x="22" y="4" width="39.68" height="62" style="--f:#FFE3DB"/><use href="#fig" x="88" y="4" width="39.68" height="62" /><path d="M62 36h24" class="ln" marker-end="url(#ah)"/></svg></div><h3>Persönlich weitergeben</h3><p>Nicht per Mail oder Chat.</p></div>
+  </div>
+  <div class="row3">
+    <div class="note "><svg class="ic " width="22" height="22" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><circle cx="17.5" cy="9" r="2.5"/><path d="M17 14.5a5 5 0 0 1 4.5 5"/></svg><div><b>Jemand geht?</b> Haken bei „Aktiv“ raus. Die Person verschwindet aus Listen und Wunschabgabe.</div></div>
+    <div class="note "><svg class="ic " width="22" height="22" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M16 7l3 3M14 9l2 2"/></svg><div><b>Seitenpasswort ändern:</b> Einstellungen → Verwaltung. Wer angemeldet ist, bleibt es.</div></div>
+    <div class="note "><svg class="ic " width="22" height="22" viewBox="0 0 24 24"><path d="M5 3h11l4 4v14H4V4a1 1 0 0 1 1-1z"/><path d="M8 3v5h7V3M7 21v-7h10v7"/></svg><div><b>Sicherung:</b> „Sicherung herunterladen“ ab und zu. „Sicherung einspielen“ stellt alles wieder her.</div></div>
+  </div>
+</main>
+  <footer><span class="pn">9</span><span class="wm">DIENSTPLAN</span></footer>
+</section>
+<section class="page ">
+  <header><div class="kick">Zum Schluss</div><h1>Spielregeln</h1></header>
+  <main>
+  <div class="rules">
+    <div><div class="rbig">11<small>h</small></div><b>Ruhezeit</b><p>zwischen zwei Diensten. Darunter schlägt die Anwendung nichts vor.</p></div>
+    <div><div class="rbig">24<small>h</small></div><b>am Stück</b><p>höchstens. Längere Ketten werden aussortiert.</p></div>
+    <div><div class="rbig">30<small>Tage</small></div><b>angemeldet</b><p>bleibt dein Gerät. Danach einmal neu anmelden.</p></div>
+  </div>
+  <h2>Die Dienste über den Tag</h2>
+  <div class="tls">
+    <div class="tl head"><b></b><div class="trk"><em style="left:0%">0</em><em style="left:25%">6</em><em style="left:50%">12</em><em style="left:75%">18</em><em style="left:100%">24</em></div><span></span></div>
+    <div class="tl"><b>F</b><div class="trk"><i class="" style="left:32.29166666666667%;width:35.41666666666667%"></i></div><span>07:45 – 16:15</span></div>
+    <div class="tl"><b>Z</b><div class="trk"><i class="" style="left:41.66666666666667%;width:35.41666666666667%"></i></div><span>10:00 – 18:30</span></div>
+    <div class="tl"><b>S</b><div class="trk"><i class="a" style="left:64.58333333333334%;width:35.41666666666667%"></i></div><span>15:30 – 00:00</span></div>
+    <div class="tl"><b>N</b><div class="trk"><i class="k" style="left:87.5%;width:12.5%"></i><i class="k" style="left:0%;width:37.5%"></i></div><span>21:00 – 09:00</span></div>
+  </div>
+  <p class="fine up">Alle Kürzel mit Uhrzeiten findest du in der Anwendung unter „Legende &amp; Schichtzeiten“.</p>
+  <div class="help">
+    <svg viewBox="0 0 200 150"><use href="#fig" x="18" y="26" width="75.52" height="118" style="--f:#FFE3DB"/><path d="M92 20h88a10 10 0 0 1 10 10v44a10 10 0 0 1-10 10h-56l-18 16 4-16h-18a10 10 0 0 1-10-10V30a10 10 0 0 1 10-10z" fill="#fff" class="ln"/><text x="136" y="64" text-anchor="middle" font-size="34" font-weight="900">?</text></svg>
+    <div><h2>Hängt etwas?</h2><p>Sprich die Dienstplanung an. Die Anwendung wächst mit eurem Feedback und lässt sich schnell anpassen.</p>
+    <div class="url dark"><svg class="ic " width="18" height="18" viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg> chunkyfire.github.io/dienstplan</div></div>
+  </div>
+  <p class="fine">Die Anwendung dient ausschließlich der internen Organisation und Übersicht der Personaleinsatzplanung. Sie ist kein Medizinprodukt, hat keine medizinische Zweckbestimmung, verarbeitet keine Patientendaten und trifft keine medizinischen Entscheidungen.</p>
+</main>
+  <footer><span class="pn">10</span><span class="wm">DIENSTPLAN</span></footer>
+</section></body></html>
