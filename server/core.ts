@@ -218,7 +218,10 @@ const actions: Record<string, (c: Ctx, d: Data) => Promise<unknown>> = {
   async setPlanStatus(c, d) {
     await planner(c);
     if (d?.status !== "final" && d?.status !== "entwurf") throw new AppError("Ungültiger Status");
-    await c.db.update(T.plans, { status: d.status }, [["month_key", "eq", month(d?.key)]]);
+    const key = month(d?.key);
+    await c.db.update(T.plans, { status: d.status }, [["month_key", "eq", key]]);
+    // Wishes are only needed until the plan they led to is in force; the plan itself keeps what matters.
+    if (d.status === "final") await c.db.remove(T.wishes, [["date", "lt", `${nextMonth(key)}-01`]]);
     return { ok: true };
   },
 
@@ -333,11 +336,12 @@ const actions: Record<string, (c: Ctx, d: Data) => Promise<unknown>> = {
   async settings(c) {
     unlocked(c);
     const me = await currentStaff(c);
-    if (!me) return { me: null, names: await loginNames(c.db), staff: [] };
-    if (!me.is_planner) return { me: toMe(me), names: [], staff: [] };
+    if (!me) return { me: null, names: await loginNames(c.db), staff: [], standby: [] };
     const rows = (await c.db.select(T.staff, { order: ["name"] })) as Staff[];
+    const standby = rows.filter(r => r.active).map(r => ({ name: r.name, role: r.role, active: r.active, standbyPos: r.standby_pos }));
+    if (!me.is_planner) return { me: toMe(me), names: [], staff: [], standby };
     return {
-      me: toMe(me), names: [],
+      me: toMe(me), names: [], standby,
       staff: rows.map(r => ({
         id: r.id, name: r.name, role: r.role, stellenanteil: Number(r.stellenanteil), qualifications: r.qualifications ?? [],
         active: r.active, isPlanner: r.is_planner, hasAccount: !!r.pw_hash, hasInvite: !!r.invite_code,

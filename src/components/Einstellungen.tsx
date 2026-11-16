@@ -4,13 +4,16 @@ import { useServerFn } from "@tanstack/react-start";
 import { backupExport, backupImport, changePassword, inviteStaff, saveStaff, setAiModel, setSitePassword, STAFF_ROLES, QUALIFICATIONS, type LoginName, type Me, type StaffAdmin } from "@/lib/suite.functions";
 import { SuiteTabs } from "@/components/SuiteTabs";
 import { LoginBox } from "@/components/LoginBox";
+import { StandbyList } from "@/components/StandbyList";
+import type { StaffInfo } from "@/lib/scheduleStore";
 
-export interface SettingsData { me: Me | null; names: LoginName[]; staff: StaffAdmin[]; aiModel?: string; aiReady?: boolean; }
+export interface SettingsData { me: Me | null; names: LoginName[]; staff: StaffAdmin[]; standby?: StaffInfo[]; aiModel?: string; aiReady?: boolean; }
 
 const BLANK: StaffAdmin = { id: "", name: "", role: "Assistenzarzt", stellenanteil: 1, qualifications: [], active: true, isPlanner: false, hasAccount: false, hasInvite: false };
 
 export function Einstellungen({ data }: { data: SettingsData }) {
   const { me } = data;
+  const router = useRouter();
   return (
     <div className="app-shell">
       <header className="app-header">
@@ -26,6 +29,7 @@ export function Einstellungen({ data }: { data: SettingsData }) {
         {!me ? <LoginBox names={data.names} purpose="Einstellungen sind an dein persönliches Konto gebunden." /> : (
           <>
             {me.isPlanner && <StaffTable staff={data.staff} meId={me.id} />}
+            <StandbyList section staff={data.standby ?? []} onChanged={() => router.invalidate()} />
             <PasswordForm />
             {me.isPlanner && <AdminTools data={data} />}
           </>
@@ -199,7 +203,7 @@ function AdminTools({ data }: { data: SettingsData }) {
         <button className="btn-plain" disabled={busy} onClick={() => fileRef.current?.click()}>Sicherung einspielen</button>
         <input ref={fileRef} type="file" accept="application/json,.json" hidden onChange={e => { const f = e.target.files?.[0]; e.target.value = ""; if (f) void run(() => upload(f)); }} />
       </div>
-      <p className="assistant-sub">Die Sicherung enthält Personal, alle Pläne, Wünsche und die Einspring-Historie, aber keine Passwörter. Beim Einspielen werden Personen über den Namen zugeordnet; bestehende Konten bleiben unberührt.</p>
+      <p className="assistant-sub">Die Sicherung enthält Personal, alle Pläne, die noch offenen Wünsche und die Einspring-Historie, aber keine Passwörter. Beim Einspielen werden Personen über den Namen zugeordnet; bestehende Konten bleiben unberührt.</p>
     </section>
   );
 }

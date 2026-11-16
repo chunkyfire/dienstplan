@@ -598,6 +598,8 @@ button.week-entry { height: auto; min-height: 32px; justify-content: flex-start;
 .standby-list li { display: flex; align-items: center; gap: .35rem; font-size: .85rem; }
 .standby-list li:nth-child(-n+2) .standby-name { font-weight: 700; }
 .standby-list .nav-btn { width: 26px; height: 26px; font-size: .9rem; }
+.standby-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1.5rem; margin-top: .75rem; }
+.standby-cols h4 { margin-bottom: .4rem; }
 .standby-pos { width: 1.6rem; text-align: right; color: var(--muted-foreground); font-size: .75rem; }
 .standby-name { flex: 1; }
 .cover-bar { position: fixed; left: 50%; bottom: 1rem; transform: translateX(-50%); z-index: 60; display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; max-width: calc(100vw - 2rem); background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: .7rem .9rem; box-shadow: 0 12px 40px -12px oklch(0 0 0 / 35%); font-size: .88rem; }

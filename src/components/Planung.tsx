@@ -273,7 +273,7 @@ function PlannerPanel({ data }: { data: PlanningData }) {
             <span className="plan-actions">
               {p.status === "entwurf" && <Link to="/" search={{ entwurf: true }} className="btn-plain btn-sm">Ansehen</Link>}
               {p.status === "entwurf"
-                ? <button className="assistant-btn btn-sm" disabled={busy} onClick={() => run(() => statusFn({ data: { key: p.key, status: "final" } }), `${p.label} ist verabschiedet und für alle sichtbar.`)}>Verabschieden</button>
+                ? <button className="assistant-btn btn-sm" disabled={busy} title="Macht den Plan für alle sichtbar und löscht die Wünsche bis einschließlich dieses Monats" onClick={() => run(() => statusFn({ data: { key: p.key, status: "final" } }), `${p.label} ist verabschiedet und für alle sichtbar. Die Wünsche bis einschließlich dieses Monats sind gelöscht.`)}>Verabschieden</button>
                 : <button className="btn-plain btn-sm" disabled={busy} onClick={() => run(() => statusFn({ data: { key: p.key, status: "entwurf" } }), `${p.label} ist wieder Entwurf und für das Team ausgeblendet.`)}>Zurück zum Entwurf</button>}
             </span>
           </li>

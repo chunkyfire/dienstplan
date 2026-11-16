@@ -152,8 +152,12 @@ test("Entwürfe sieht nur, wer plant", async () => {
   const preview = (await call("base", { drafts: true }, boss)).result;
   expect(preview.imports.map(i => i.key)).toEqual(["2026-11", "2026-12"]);
   expect(preview.draftKeys).toEqual(["2026-12"]);
+  await call("setPlanningMonth", { month: "2027-01", locked: false }, boss);
+  for (const date of ["2026-12-05", "2027-01-05"]) await call("setWish", { date, code: "X" }, anna);
   await call("setPlanStatus", { key: "2026-12", status: "final" }, boss);
   expect((await call("base", {}, anna)).result.imports.length).toBe(2);
+  // Mit dem verabschiedeten Plan sind die Wünsche bis zu diesem Monat weg, spätere bleiben.
+  expect(db.tables.dp_wishes.map(w => w.date)).toEqual(["2027-01-05"]);
 });
 test("Einspringen: ans Ende der eigenen Ebene, mit Eintrag für die Historie", async () => {
   const { call, db } = await setup();

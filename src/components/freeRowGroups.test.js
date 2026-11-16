@@ -72,3 +72,10 @@ test("Einspringliste bestimmt die Reihenfolge innerhalb der Ebene", () => {
   const bands = freeRowGroups([day], { Kern: 1, Zeller: 2 });
   expect(bands[0].cells[0].map(a => a.doctor)).toEqual(["Kern", "Zeller", "Dahl"]);
 });
+
+test("Wer ein X hat, zählt nicht zu den Nächsten: vorn stehen nur, die können", () => {
+  const standby = { Erste: 1, Zweite: 2, Dritte: 3 };
+  const groups = freeRowGroups([[person("Dritte", "Oberarzt"), person("Erste", "Oberarzt", "wish", "Freiwunsch"), person("Zweite", "Oberarzt")]], standby);
+  expect(groups.find(g => g.key === "Oberarzt").cells[0].map(a => a.doctor)).toEqual(["Zweite", "Dritte"]);
+  expect(groups.find(g => g.key === "wish").cells[0].map(a => a.doctor)).toEqual(["Erste"]);
+});

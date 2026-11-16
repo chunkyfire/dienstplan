@@ -197,7 +197,7 @@ pages.push(page("Bereich A", "Aktuell", `
     <div>${co(3)}<p><b>Dienste von oben nach unten:</b> Notarzt, Früh, Zwischen, Spät, Nacht.</p></div>
     <div>${co(4)}<p><b>Punkt = Ebene.</b> ${dot(LV.ca)} Chefarzt ${dot(LV.oa)} Oberarzt ${dot(LV.fa)} Facharzt ${dot(LV.aa)} Assistenzarzt</p></div>
     <div>${co(5)}<p><b>Dienst antippen:</b> „Fällt aus? Lösungen anzeigen“.</p></div>
-    <div>${co(6)}<p><b>Wer kann einspringen?</b> Die ersten zwei sind laut Einspringliste als Nächste dran.</p></div>
+    <div>${co(6)}<p><b>Wer kann einspringen?</b> Die ersten zwei, die an dem Tag wirklich können, sind als Nächste dran. Wer ein X hat, wird übersprungen.</p></div>
   </div>
   <h2>Wer frei hat, bekommt ein Etikett</h2>
   <div class="chips">
@@ -246,7 +246,7 @@ pages.push(page("Bereich A", "Jemand fällt aus", `
 
 /* 6 Einspringliste */
 pages.push(page("Bereich A", "Die Einspringliste", `
-  <p class="lead">Jede Ebene hat ihre eigene Schlange. Vorne steht, wer als Nächstes gefragt wird.</p>
+  <p class="lead">Jede Ebene hat ihre eigene Schlange. Vorne steht, wer als Nächstes gefragt wird. Wer an dem Tag ein X, Urlaub oder Ruhezeit hat, wird übersprungen.</p>
   <svg class="queue" viewBox="0 0 660 250">
     <text x="64" y="26" text-anchor="middle" class="sl b">als Nächste dran</text>
     <path d="M22 34h84" class="ln" stroke="${A}"/>
@@ -263,7 +263,7 @@ pages.push(page("Bereich A", "Die Einspringliste", `
     ${step(3, "Alles rechnet neu", "Sofort, für alle Tage und für alle.", `<svg viewBox="0 0 150 80">${[0, 1, 2, 3].map(i => `<rect x="${16 + i * 31}" y="14" width="25" height="52" rx="7" fill="#fff" class="ln"/><circle cx="${28.5 + i * 31}" cy="27" r="4" fill="${i % 2 ? T : A}" class="ln"/><circle cx="${28.5 + i * 31}" cy="40" r="4" fill="${i % 2 ? A : T}" class="ln"/><circle cx="${28.5 + i * 31}" cy="53" r="4" fill="#fff" class="ln"/>`).join("")}</svg>`)}
   </div>
   <div class="row2">
-    ${note("pen", "<b>Reihenfolge von Hand ändern:</b> unter dem Plan „Einspringliste“ aufklappen, mit den Pfeilen verschieben. Geht mit dem Seitenpasswort.")}
+    ${note("pen", "<b>Reihenfolge festlegen:</b> in den Einstellungen unter „Einspringliste“ oder unter dem Plan aufklappen. Mit den Pfeilen verschieben.")}
     ${note("save", "<b>Nichts geht verloren.</b> Jedes Einspringen wird gespeichert und zählt bei der Planung der nächsten Monate mit.", "acc")}
   </div>
 `));
@@ -304,7 +304,7 @@ pages.push(page("Bereich B", "Hinweise &amp; Datenschutz", `
     <div class="who"><svg viewBox="0 0 110 100">${fig(0, 8, 92)}${fig(46, 8, 92)}</svg><b>Deine Ebene</b></div>
     <div class="what">${ic("eyeoff", 30)}<p><b>Nur Zahlen.</b> Keine Namen, keine Notizen. „2 weitere Freiwünsche“, mehr nicht.</p></div>
     <div class="who"><svg viewBox="0 0 70 100">${fig(3, 0, 100, T)}</svg><b>Dienstplanung</b></div>
-    <div class="what">${ic("eye", 30)}<p><b>Alle Wünsche mit Namen.</b> Ohne das lässt sich kein Plan bauen.</p></div>
+    <div class="what">${ic("eye", 30)}<p><b>Alle Wünsche mit Namen.</b> Ohne das lässt sich kein Plan bauen. Ist der Plan verabschiedet, werden die Wünsche gelöscht.</p></div>
   </div>
   <div class="row3">
     ${note("users", "<b>Kleine Ebene?</b> Bei weniger als drei anderen gibt es keinen Hinweis. Eine Zahl würde sonst auf eine Person zeigen.")}
@@ -314,7 +314,7 @@ pages.push(page("Bereich B", "Hinweise &amp; Datenschutz", `
 `));
 
 /* 9 Dienstplanung */
-const cyc = [["users", "Wünsche sammeln", "Übersicht aller Personen und Tage. „Abgabe bis“ setzen."], ["lock", "Schließen", "„Wunschabgabe schließen“. Wieder öffnen geht jederzeit."], ["down", "Paket laden", "„Planungspaket herunterladen“: Wünsche, Personal, letzte Dienste."], ["cog2", "Plan bauen", "Das Paket geht in den Plan-Generator. Heraus kommt der Monatsplan."], ["up", "Entwurf hochladen", "Als PDF. Nur die Dienstplanung sieht ihn: „Ansehen“."], ["stamp", "Verabschieden", "Jetzt sehen ihn alle unter „Aktuell“. „Zurück zum Entwurf“ blendet ihn wieder aus."]];
+const cyc = [["users", "Wünsche sammeln", "Übersicht aller Personen und Tage. „Abgabe bis“ setzen."], ["lock", "Schließen", "„Wunschabgabe schließen“. Wieder öffnen geht jederzeit."], ["down", "Paket laden", "„Planungspaket herunterladen“: Wünsche, Personal, letzte Dienste."], ["cog2", "Plan bauen", "Das Paket geht in den Plan-Generator. Heraus kommt der Monatsplan."], ["up", "Entwurf hochladen", "Als PDF. Nur die Dienstplanung sieht ihn: „Ansehen“."], ["stamp", "Verabschieden", "Jetzt sehen ihn alle unter „Aktuell“. Die Wünsche bis zu diesem Monat werden gelöscht."]];
 pages.push(page("Nur mit Planer-Recht", "Für die Dienstplanung", `
   <div class="cycle">
     <svg viewBox="0 0 300 300">

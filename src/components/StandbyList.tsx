@@ -7,7 +7,7 @@ import type { StaffInfo } from "@/lib/scheduleStore";
 const LEVELS = ["Oberarzt", "Facharzt", "Assistenzarzt"];
 
 /** Stand-in order per level. Whoever stepped in last is at the bottom; the top two are asked first. */
-export function StandbyList({ staff, onChanged }: { staff: StaffInfo[]; onChanged: () => void }) {
+export function StandbyList({ staff, onChanged, section = false }: { staff: StaffInfo[]; onChanged: () => void; section?: boolean }) {
   const moveFn = useServerFn(moveStandby);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -21,12 +21,11 @@ export function StandbyList({ staff, onChanged }: { staff: StaffInfo[]; onChange
     setBusy(false);
   }
 
-  return (
-    <details className="legend standby">
-      <summary>Einspringliste</summary>
-      <p className="assistant-sub">Oben steht, wer als Nächstes gefragt wird. Wer einspringt, rutscht ans Ende. Die Reihenfolge gilt sofort für alle Tage.</p>
+  const body = (
+    <>
+      <p className="assistant-sub">Oben steht, wer als Nächstes gefragt wird. Wer einspringt, rutscht ans Ende. Die Reihenfolge gilt sofort für alle Tage. Im Plan stehen pro Tag nur die vorn, die an dem Tag wirklich können: Wer ein X, Urlaub oder Ruhezeit hat, wird übersprungen.</p>
       {error && <p className="form-error">{error}</p>}
-      <div className="legend-body">
+      <div className={section ? "standby-cols" : "legend-body"}>
         {LEVELS.map(level => {
           const list = staff.filter(s => s.active && s.role === level).sort((a, b) => a.standbyPos - b.standbyPos || a.name.localeCompare(b.name, "de"));
           return (
@@ -47,6 +46,8 @@ export function StandbyList({ staff, onChanged }: { staff: StaffInfo[]; onChange
           );
         })}
       </div>
-    </details>
+    </>
   );
+  if (section) return <section className="planner"><h2>Einspringliste</h2>{body}</section>;
+  return <details className="legend standby"><summary>Einspringliste</summary>{body}</details>;
 }
